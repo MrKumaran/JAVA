@@ -1,0 +1,10 @@
+.up {
+background-color: lightyellow;
+color: maroon;
+font-weight: bold;
+}
+.down {
+background-color: inherit;
+color: inherit;
+font-weight: normal;
+}
