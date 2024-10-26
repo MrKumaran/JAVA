@@ -1,3 +1,5 @@
+package Basic;
+
 /*
 Constructors are the function with same name as class name
 It is called as soon as class is instantiated
@@ -7,9 +9,9 @@ Constructors rules:
 -> Constructors should not have explicit return type.
 -> Constructors should not be abstract, static, final, synchronized.
 
-Two types of constructors
--> Default constructors
--> Parameterized constructors
+Two types of Basic.constructors
+-> Default Basic.constructors
+-> Parameterized Basic.constructors
 */
 class defaultConstructor{
     // Default constructor has no parameter. even if no constructor is written in code java create its own constructor

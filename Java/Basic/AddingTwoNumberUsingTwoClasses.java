@@ -1,3 +1,5 @@
+package Basic;
+
 class addTwoNumbers{
     // Declaring two integer numbers
     int x = 10;
@@ -11,7 +13,7 @@ class addTwoNumbers{
 
 public class AddingTwoNumberUsingTwoClasses {
     public static void main(String[] args) {
-        // Creating object for class addTwoNumbers
+        // Creating object for class Basic.addTwoNumbers
         addTwoNumbers ATN = new addTwoNumbers();
         ATN.add();
     }

@@ -1,3 +1,5 @@
+package Basic;
+
 /*
 String is rather a class in java than a datatype
 String in java is Immutable

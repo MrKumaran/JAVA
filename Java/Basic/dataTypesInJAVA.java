@@ -1,3 +1,5 @@
+package Basic;
+
 /*
 Some Datatypes in JAVA
 int

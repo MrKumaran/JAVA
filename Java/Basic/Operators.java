@@ -1,3 +1,5 @@
+package Basic;
+
 public class Operators {
 
      void arithmeticOperators(){

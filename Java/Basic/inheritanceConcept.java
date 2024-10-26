@@ -1,3 +1,5 @@
+package Basic;
+
 /*
 Four types of inheritance
  -> Single inheritance

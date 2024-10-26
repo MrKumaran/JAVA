@@ -1,4 +1,4 @@
-/*
+package Basic;/*
 Arrays is a collection of data of same datatype.
 
 Index starts from 0 and ends length-1

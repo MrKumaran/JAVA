@@ -1,7 +1,7 @@
-/*
+package Basic;/*
 Three category of Control statements
 1. Branching -> if, if-else, if-elseif-else, nested if-else
-2. Looping -> for, for each, while, do while
+2. Basic.Looping -> for, for each, while, do while
 3. Jumping -> break, continue, return
 */
 import java.util.Scanner;
@@ -49,7 +49,7 @@ class Looping{
 // Three main jump statements: break, continue, and return. Used primarily to break loops
 public class controlStatements {
     public static void main(String[] args) {
-        // Using constructors
+        // Using Basic.constructors
         branching Branch = new branching();
         Looping Loop = new Looping();
     }
