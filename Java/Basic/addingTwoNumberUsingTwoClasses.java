@@ -11,7 +11,7 @@ class addTwoNumbers{
     }
 }
 
-public class AddingTwoNumberUsingTwoClasses {
+public class addingTwoNumberUsingTwoClasses {
     public static void main(String[] args) {
         // Creating object for class Basic.addTwoNumbers
         addTwoNumbers ATN = new addTwoNumbers();
