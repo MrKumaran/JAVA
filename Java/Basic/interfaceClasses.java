@@ -1,5 +1,7 @@
 package Basic;
-
+/*
+can implement any number of interface, every method declared inside interface is abstract by nature
+*/
 interface vehicle{
     int engineCount = 1; // can't change as it is final and static
     void details(String bodyType, float topSpeed, int wheelCount, float cc, String manufacture, int year, String model);
