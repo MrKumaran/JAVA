@@ -10,6 +10,7 @@
 ## lang Interested
 #### Bash, JS
 
-### Word casing notions are
-- For Folders - Pascal case ( First letter of each word is capitalized )
-- For files - Camel case ( First word is all lowercase and all other word first letter is capitalized )
+### Naming Conventions I use:
+- For Folders - Pascal case (First letter of each word is capitalized) eg: FirstName
+- For files - Camel case (First word is all lowercase and all other word first letter is capitalized) eg: firstName
+- For variables, method/function, class - Camel case
