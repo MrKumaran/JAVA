@@ -31,7 +31,7 @@ public class genetics{
         }
     }
     public static void main(String[] args){
-        List<Float> r=new ArrayList();
+        List<Float> r=new ArrayList<>();
         r.add(6.3F);
         r.add(5.9F);
         FavoriteClasses<String,Integer,Float> a=new FavoriteClasses<String,Integer,Float>("Hello",67,r.get(0));
