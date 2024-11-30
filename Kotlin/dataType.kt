@@ -7,7 +7,6 @@ Kotlin datatypes
  Boolean
 
 */
-
 fun main() {
     var Integer: Int = 10
     var Text: String = "This is an example of TEXT"
