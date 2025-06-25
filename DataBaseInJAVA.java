@@ -9,7 +9,7 @@ public class DataBaseInJAVA{
     public static void main(String[] args) throws Exception{
         String url = "jdbc:mysql://localhost:3306/new";
         String username = "root"; // MySQL credentials
-        String password = "Kumaran@4376";
+        String password = "password@123";
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection(url, username, password);
         Statement st = con.createStatement();
