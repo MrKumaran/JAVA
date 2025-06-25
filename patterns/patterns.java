@@ -67,9 +67,9 @@ public class patterns {
         for (int i = 0; i < d; i++) {
             for (int j = 0; j < d; j++) {
                 if (i == 0 || i == d - 1 || j == 0 || j == d - 1) {
-                    System.out.print("*");
+                    System.out.print("* ");
                 } else {
-                    System.out.print(" ");
+                    System.out.print("  ");
                 }
             }
             System.out.println();
@@ -80,10 +80,10 @@ public class patterns {
         System.out.println("rhombus");
         for (int i = 0; i < d; i++) {
             for (int j = 0; j<d-i;j++){
-                System.out.print(" ");
+                System.out.print("  ");
             }
             for (int j = 0; j < d; j++) {
-                System.out.print("*");
+                System.out.print("* ");
             }
             System.out.println();
         }
@@ -111,19 +111,20 @@ public class patterns {
         }
     }
 
+    public static void triangle(int s){
+        int total = (s*2-1);
+        for (int i = 1; i<=s; i++){
+            for (int j = 1; j<=total; j++){
+                if (i+j <= s) System.out.print("  ");
+                else if (j - i >= s) {
+                    System.out.print("  ");
+                } else System.out.print("* ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        int d = s.nextInt();
-        voidDiamond(d);
-        System.out.println();
-        X(d);
-        System.out.println();
-        sidePyramid(d);
-        System.out.println();
-        voidBox(d);
-        System.out.println();
-        rhombus(d);
-        System.out.println();
-        hourClock(d);
+       triangle(5);
     }
 }
