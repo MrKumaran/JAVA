@@ -11,19 +11,61 @@ public class test {
 //        String s1 = "abc *&%$b@a";
 //        boolean result = staticMethods.palindrome(s1);
 //        System.out.println(result);
-//        int[] array = {3,6,5,4,2,1,7,0,9,8};
-//        int number = staticMethods.missingNnumber(array);
-//        System.out.println(number); // 7
+        int[] array = {1,0,2,4};
+        int number = staticMethods.missingNnumberXor(array);
+        System.out.println(number); // 7
         //System.out.println(staticMethods.longestSubstring("abcabcdAa"));
         // char firstUnique = staticMethods.firstUniqueChar("a@*&%^@*&abbssdd");
         // if (firstUnique != ' ') System.out.println(firstUnique);
         // else System.out.println(-1);
         // staticMethods.numPatternPrinting(10);
         // staticMethods.leadersInArray(new int[]{254,1,31,54,7});
+        // staticMethods.numPatternPrinting(6);
     }
 }
 
 class staticMethods {
+
+    public static void countDigitTillN(int n){
+        int count = 0;
+        int i = 9;
+       int j = 1;
+        while (n>0){
+            int h = n%i;
+            if(h == n){
+                count += n*j;
+                break;
+            }
+            count += j*i;
+            n -= j*i;
+            j++;
+            i *= 10;
+        }
+
+        System.out.println(count);
+    }
+
+    public static void sumDigit(int n){
+        if (n == 0){
+            System.out.println(0);
+            return;
+        }
+        if (n %9 == 0){
+            System.out.println(9);
+            return;
+        }
+        System.out.println(n % 9);
+    }
+
+    public static void pseudoBinary(int n){
+        int max = 0;
+            while(n>0){
+                int digit = n%10;
+                max = Math.max(digit, max);
+                n = n/10;
+            }
+        System.out.println(max);
+    }
 
     /*
     1
@@ -97,40 +139,19 @@ class staticMethods {
         return firstUnique;
     }
 
-    // TODO redo
-    public static int longestSubstring(String s){
-        int length = s.length();
-        if (length <= 1) return length;
-        String longSubstring = "";
-        for (int i = 0; i< length; i++){
-            int nextIndex = s.indexOf(s.charAt(i), i+1);
-            if (nextIndex == -1) nextIndex = length;
-            String sub = s.substring(i, nextIndex);
-            Set<Character> charSet = new HashSet<>();
-            for (char c : sub.toCharArray()) {
-                charSet.add(c);
-            }
-            if (sub.length() == charSet.size()) longSubstring = sub;
-        }
-
-        return longSubstring.length();
-    }
-
     public static int missingNnumberXor(int[] array) {
         int max = array.length;
         if (max == 0) return 0;
 
         int xor = 0;
         boolean isZero = false;
-
-        // Single loop: XOR array elements and corresponding expected values
+// 0 1 2 3 4 6 7
         for (int i = 0; i < array.length; i++) {
             if (array[i] == 0) isZero = true;
             xor ^= array[i] ^ i; // XOR both at once
         }
-        xor ^= max; // Don't forget the last expected value
+        xor ^= max;
 
-        // Handle special cases
         if (xor == 0 && isZero) return max + 1;
         else if (!isZero) return 0;
         return xor;
@@ -238,9 +259,7 @@ class staticMethods {
         List<Character> stack = new ArrayList<>();
         for(char c: s.toCharArray()){
             if(c == ')'){
-                int count = 0;
                 while(!stack.isEmpty() && stack.getLast() != '('){
-                    count++;
                     stack.removeLast();
                 }
                 if(!stack.isEmpty()){
@@ -248,18 +267,19 @@ class staticMethods {
                 }
                 else {
                     System.out.println("extra ))))");
-                    break;
-                }
-                if(count == 0){
-                    System.out.println("extre");
-                    break;
+                    return;
                 }
             }
             else {
                 stack.add(c);
             }
         }
-        System.out.println("No extra");
+        if (stack.isEmpty()){
+            System.out.println("No extra");
+        }
+        else {
+            System.out.println("Extra ((");
+        }
     }
 
     public static void sumOfTwoSquares(int number){

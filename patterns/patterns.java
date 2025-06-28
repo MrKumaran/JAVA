@@ -91,11 +91,11 @@ public class patterns {
 
     public static void hourClock(int d) {
         System.out.println("Hour clock");
-        for (int i = 1; i <= d; i++) {
-            for (int j = 1; j < i; j++) {
+        for (int i = 0; i < d; i++) {
+            for (int j = 1; j <= i; j++) {
                 System.out.print(" ");
             }
-            for (int j = d - i + 1; j > 0; j--) {
+            for (int j = 0; j < d - i; j++) {
                 System.out.print("* ");
             }
             System.out.println();
@@ -124,7 +124,32 @@ public class patterns {
         }
     }
 
+    public static void Diamond(int d){
+        System.out.println("Diamond");
+        int k = d/2;
+        int l = 0;
+
+        for (int i = 1; i < d-1; i++){
+            for (int j = 0; j<d; j++){
+                if (j >= k-l && j <= k+l){
+                    System.out.print("* ");
+                }
+                else{
+                    System.out.print("  ");
+                }
+            }
+            if (i<k){
+                l++;
+            }
+            else{
+                l--;
+            }
+            System.out.println();
+        }
+
+    }
+
     public static void main(String[] args) {
-       triangle(5);
+        sidePyramid(11);
     }
 }
