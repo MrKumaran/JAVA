@@ -11,9 +11,11 @@ public class test {
 //        String s1 = "abc *&%$b@a";
 //        boolean result = staticMethods.palindrome(s1);
 //        System.out.println(result);
-        int[] array = {1,0,2,4};
-        int number = staticMethods.missingNnumberXor(array);
-        System.out.println(number); // 7
+        int[] array = {1,2,3,4,5,6,7,8,9,9};
+        int k = 3;
+        staticMethods.containsDuplicateII(array, k);
+        //int number = staticMethods.missingNnumberXor(array);
+        //System.out.println(number); // 7
         //System.out.println(staticMethods.longestSubstring("abcabcdAa"));
         // char firstUnique = staticMethods.firstUniqueChar("a@*&%^@*&abbssdd");
         // if (firstUnique != ' ') System.out.println(firstUnique);
@@ -25,6 +27,43 @@ public class test {
 }
 
 class staticMethods {
+
+    public static void containsDuplicateII(int[] arr, int k){
+        int left = 0, right = 1;
+        int length = arr.length;
+        boolean isDuplicate = false;
+        if(length <= k){
+            ArrayList<Integer> hm = new ArrayList<>();
+            for (int i: arr){
+                if (hm.contains(i)){
+                    isDuplicate = true;
+                    break;
+                }
+                else{
+                    hm.add(i);
+                }
+            }
+        }
+        else {
+            int end = right + k;
+            while(left < length){
+                for(int i = right; i<end; i++){
+                    if (arr[i] == arr[left]) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+                if(isDuplicate) break;
+                left++;
+                right++;
+                if (right + k >= length) end = length;
+                else end = right+k;
+            }
+            System.out.println(left + " " + length);
+        }
+
+        System.out.println(isDuplicate);
+    }
 
     public static void countDigitTillN(int n){
         int count = 0;
