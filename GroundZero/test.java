@@ -5,61 +5,65 @@ import java.util.stream.Collectors;
 
 public class test {
     public static void main(String[] args) {
-
-        //Scanner s = new Scanner(System.in);
-        //s.close();
-//        String s1 = "abc *&%$b@a";
-//        boolean result = staticMethods.palindrome(s1);
-//        System.out.println(result);
-        int[] array = {1,2,3,4,5,6,7,8,9,9};
-        int k = 3;
-        staticMethods.containsDuplicateII(array, k);
-        //int number = staticMethods.missingNnumberXor(array);
-        //System.out.println(number); // 7
-        //System.out.println(staticMethods.longestSubstring("abcabcdAa"));
-        // char firstUnique = staticMethods.firstUniqueChar("a@*&%^@*&abbssdd");
-        // if (firstUnique != ' ') System.out.println(firstUnique);
-        // else System.out.println(-1);
-        // staticMethods.numPatternPrinting(10);
-        // staticMethods.leadersInArray(new int[]{254,1,31,54,7});
-        // staticMethods.numPatternPrinting(6);
+        staticMethods.printingPatter(11);
     }
 }
 
 class staticMethods {
 
+    public static void printingPatter(int n){
+        // n = 5
+        //        1
+        //        3 2
+        //        6 5 4
+        //        8 7
+        //        9
+        int k = 2;
+        int element;
+        int start = 0;
+        for (int i = 1; i<=n; i++){
+            if (i<=n/2+1){
+                start = start + i;
+                element = start;
+                for (int j = 1; j<=i; j++){
+                    System.out.print(element-- + " ");
+                }
+            }
+            else {
+                int g = i-k;
+                k+=2;
+                start = start + g;
+                element = start;
+                for (int j = 1; j<=g; j++){
+                    System.out.print(element-- + " ");
+                }
+            }
+            System.out.println();
+        }
+
+    }
+
+    // leetcode 219
     public static void containsDuplicateII(int[] arr, int k){
-        int left = 0, right = 1;
         int length = arr.length;
         boolean isDuplicate = false;
-        if(length <= k){
-            ArrayList<Integer> hm = new ArrayList<>();
-            for (int i: arr){
-                if (hm.contains(i)){
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for (int i = 0; i<length; i++){
+            if (hm.containsKey(arr[i])){
+                int lastSeen = hm.get(arr[i]);
+                System.out.println(i);
+                if (i - lastSeen <= k) {
                     isDuplicate = true;
+                    System.out.println(i);
                     break;
                 }
-                else{
-                    hm.add(i);
+                else {
+                    hm.put(arr[i], i);
                 }
             }
-        }
-        else {
-            int end = right + k;
-            while(left < length){
-                for(int i = right; i<end; i++){
-                    if (arr[i] == arr[left]) {
-                        isDuplicate = true;
-                        break;
-                    }
-                }
-                if(isDuplicate) break;
-                left++;
-                right++;
-                if (right + k >= length) end = length;
-                else end = right+k;
+            else{
+                hm.put(arr[i], i);
             }
-            System.out.println(left + " " + length);
         }
 
         System.out.println(isDuplicate);
@@ -106,14 +110,14 @@ class staticMethods {
         System.out.println(max);
     }
 
-    /*
-    1
-    2 6
-    3 7 10
-    4 8 11 13
-    5 9 12 14 15
-     */
     public static void numPatternPrinting(int n){
+        /*
+        1
+        2 6
+        3 7 10
+        4 8 11 13
+        5 9 12 14 15
+     */
         for (int i = 1; i<=n; i++){
             int temp = i;
             for (int j = 1; j<=i; j++){
