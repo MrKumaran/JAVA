@@ -5,11 +5,123 @@ import java.util.stream.Collectors;
 
 public class test {
     public static void main(String[] args) {
-        staticMethods.printingPatter(11);
+        staticMethods.findLongestPalindromicString("abbabab");
     }
 }
 
 class staticMethods {
+    static void findLongestPalindromicString(String text) {
+        int N = text.length();
+        if (N == 0) return;
+        N = 2 * N + 1; // Position count
+        int[] L = new int[N + 1]; // LPS Length Array
+        L[0] = 0;
+        L[1] = 1;
+        int C = 1; // centerPosition
+        int R = 2; // centerRightPosition
+        int i = 0; // currentRightPosition
+        int iMirror; // currentLeftPosition
+        int maxLPSLength = 0;
+        int maxLPSCenterPosition = 0;
+        int start = -1;
+        int end = -1;
+        int diff = -1;
+
+        for (i = 2; i < N; i++) {
+            iMirror = 2 * C - i;
+            L[i] = 0;
+            diff = R - i;
+            if (diff > 0)
+                L[i] = Math.min(L[iMirror], diff);
+            System.out.println("L[i] "+ i +" " + L[i]);
+            System.out.println("Diff "+ i +" " + diff);
+            System.out.println("R "+ i +" " + R);
+            System.out.println("iMirror " + i + " " +iMirror);
+            while (
+                    ((i + L[i]) + 1 < N && (i - L[i]) > 0) &&
+                    (
+                            ((i + L[i] + 1) % 2 == 0) ||
+                                    (text.charAt((i + L[i] + 1) / 2) == text.charAt((i - L[i] - 1) / 2))
+                    )
+            ) {
+                L[i]++;
+            }
+            System.out.println("L[i] after loop "+ i +" " + L[i]);
+            if (L[i] > maxLPSLength) // Track maxLPSLength
+            {
+                maxLPSLength = L[i];
+                maxLPSCenterPosition = i;
+            }
+            if (i + L[i] > R) {
+                C = i;
+                R = i + L[i];
+            }
+            System.out.println("C after change "+ i +" " + C);
+            System.out.println("R after change "+ i +" " + R);
+            System.out.println(Arrays.toString(L));
+        }
+
+
+
+        start = (maxLPSCenterPosition - maxLPSLength) / 2;
+        end = start + maxLPSLength - 1;
+        System.out.printf("LPS of string is %s : ", text);
+        for (i = start; i <= end; i++)
+            System.out.print(text.charAt(i));
+        System.out.println();
+    }
+
+    public static void manacherAlgorithm(String s){
+        int length = s.length();
+        int[] array = new int[length];
+        for (int i = 0; i < length; i++){
+            int left = i-1;
+            int right = i+1;
+            while(left>=0 && right < length){
+                if (s.charAt(left) != s.charAt(right)) break;
+                left--;
+                right++;
+            }
+            System.out.println(s.substring(left+1,right));
+        }
+    }
+
+//    public static void findAllPalindromeSubstring(String s){
+//        int n = s.length();
+//        int right = 0,index = 0,left = 0;
+//        while(index < n){
+//            while(s.charAt(left) == s.charAt(right) && left > 0 && right < n){
+//                right += 1;
+//                left -= 1;
+//            }
+//        }
+//    }
+
+    public static void fibAddition(int n){
+        // op: 34+13+3 ->ip 50
+        int limit = (int)Math.sqrt(n) + 4;
+        int[] fibonacci = new int[limit];
+        fibonacci[0] = 1;
+        fibonacci[1] = 1;
+        int length = 2;
+        for (int i = 2; i<limit; i++){
+            fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+            length++;
+        }
+        int[] used = new int[limit];
+        int index = 0;
+        for (int i = length-1;i>=0; i-- ){
+            if (n>=fibonacci[i]){
+                if (index == 0 || used[index-1] != fibonacci[i+1]){
+                    used[index++] = fibonacci[i];
+                    n-=fibonacci[i];
+                }
+            }
+        }
+        for (int i = 0; i<index;i++){
+            System.out.print(used[i] + " ");
+        }
+    }
 
     public static void printingPatter(int n){
         // n = 5
