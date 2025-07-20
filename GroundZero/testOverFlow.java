@@ -6,11 +6,49 @@ import java.util.*;
 
 public class testOverFlow {
     public static void main(String[] args) {
-
+        var test = new testes();
+        System.out.println(test.isPalindrome("0a"));
     }
 }
 
 class testes{
+
+    public boolean isPalindrome(String s) {
+        s = s.toLowerCase();
+        boolean isTrue = true;
+        int length = s.length();
+        int left = 0;
+        int right = length - 1;
+        while(left < right){
+            if (!(Character.isAlphabetic(s.charAt(left)) || Character.isDigit(s.charAt(left)))){
+                left++;
+                continue;
+            }
+            if (!(Character.isAlphabetic(s.charAt(right)) || Character.isDigit(s.charAt(right)))){
+                right--;
+                continue;
+            }
+            if (s.charAt(left) != s.charAt(right)){
+                isTrue = false;
+                break;
+            }
+            left++;
+            right--;
+        }
+        return isTrue;
+    }
+
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> dummy = new ArrayList<>();
+        dummy.add(1);
+        for (int i = 0; i < rowIndex; i++){
+            dummy.addFirst(0);
+            for (int j = 0; j < dummy.size() -1; j++){
+                dummy.set(j, dummy.get(j) + dummy.get(j+1));
+            }
+        }
+        return dummy;
+    }
 
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (n == 0 && m == 0) return;
