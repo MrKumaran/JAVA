@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class test {
     public static void main(String[] args) {
-        staticMethods.findLongestPalindromicString("abbabab");
+        staticMethods.printingPatter(5);
     }
 }
 
